@@ -2,9 +2,9 @@
 import { 
   GraduationCap, 
   Baby, 
-  Divorce, 
-  Retirement, 
-  City, 
+  Heart, 
+  Palmtree, 
+  MapPin,
   ArrowRight 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,17 +47,17 @@ const TransitionCategories = () => {
       description: "Meet fellow students adjusting to campus life and academics."
     },
     {
-      icon: <Divorce className="h-8 w-8" />,
+      icon: <Heart className="h-8 w-8" />,
       title: "Recent Divorce",
       description: "Find support from others who understand this challenging transition."
     },
     {
-      icon: <Retirement className="h-8 w-8" />,
+      icon: <Palmtree className="h-8 w-8" />,
       title: "Retirement",
       description: "Explore this new phase of life with peers sharing the journey."
     },
     {
-      icon: <City className="h-8 w-8" />,
+      icon: <MapPin className="h-8 w-8" />,
       title: "New to the City",
       description: "Get connected with locals and fellow newcomers in your area."
     }
