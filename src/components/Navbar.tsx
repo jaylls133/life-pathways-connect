@@ -21,8 +21,8 @@ const Navbar = () => {
             <Link to="/" className="text-gray-700 hover:text-purple-600 font-medium">
               Home
             </Link>
-            <Link to="/events" className="text-gray-700 hover:text-purple-600 font-medium">
-              Events
+            <Link to="/transitions" className="text-gray-700 hover:text-purple-600 font-medium">
+              Transitions
             </Link>
             <Link to="/groups" className="text-gray-700 hover:text-purple-600 font-medium">
               Groups
@@ -34,11 +34,11 @@ const Navbar = () => {
           
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50">
-              Log In
+            <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50" asChild>
+              <Link to="/login">Log In</Link>
             </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700">
-              Sign Up
+            <Button className="bg-purple-600 hover:bg-purple-700" asChild>
+              <Link to="/signup">Sign Up</Link>
             </Button>
           </div>
           
@@ -68,11 +68,11 @@ const Navbar = () => {
                 Home
               </Link>
               <Link 
-                to="/events" 
+                to="/transitions" 
                 className="text-gray-700 hover:text-purple-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Events
+                Transitions
               </Link>
               <Link 
                 to="/groups" 
@@ -89,11 +89,11 @@ const Navbar = () => {
                 About
               </Link>
               <div className="flex flex-col space-y-2 pt-2">
-                <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50 w-full">
-                  Log In
+                <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50 w-full" asChild>
+                  <Link to="/login" onClick={() => setIsMenuOpen(false)}>Log In</Link>
                 </Button>
-                <Button className="bg-purple-600 hover:bg-purple-700 w-full">
-                  Sign Up
+                <Button className="bg-purple-600 hover:bg-purple-700 w-full" asChild>
+                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>Sign Up</Link>
                 </Button>
               </div>
             </div>
