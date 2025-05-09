@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -26,6 +26,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const Signup = () => {
+  const navigate = useNavigate();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,8 +41,23 @@ const Signup = () => {
   const onSubmit = async (values: FormValues) => {
     try {
       console.log("Signup values:", values);
-      toast.success("Account created successfully! Please check your email.");
+      
       // Here you would normally handle registration with Supabase
+      // and send verification email
+      
+      // Show a success toast with more detailed information
+      toast.success(
+        `Account created! A verification email has been sent to ${values.email}. Please check your inbox.`,
+        {
+          duration: 5000
+        }
+      );
+      
+      // Simulate a delay before redirecting to login page
+      // In a real implementation, you might redirect to a "check your email" page
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (error) {
       toast.error("Registration failed. Please try again.");
       console.error("Signup error:", error);

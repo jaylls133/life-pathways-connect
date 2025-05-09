@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -10,7 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import Layout from "@/components/Layout";
-import { Mail, Lock, LogIn, UserPlus } from "lucide-react";
+import { Mail, Lock, LogIn } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -21,6 +21,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const Login = () => {
+  const navigate = useNavigate();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -34,7 +35,14 @@ const Login = () => {
     try {
       console.log("Login values:", values);
       toast.success("Login successful! Redirecting...");
+      
       // Here you would normally handle authentication with Supabase
+      
+      // Simulate a short delay before redirecting, 
+      // similar to how an actual authentication would work
+      setTimeout(() => {
+        navigate("/");  // Redirect to homepage after successful login
+      }, 1500);
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
       console.error("Login error:", error);
